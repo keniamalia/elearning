@@ -6,12 +6,12 @@ class Api extends REST_Controller{
 
     public function index_post() {
         $action = $this->input->post('action');
-        echo $action;
         switch ($action) {
             case "login":
             $this->login();
             break;
             default :
+            $this->not_found();
             break;
         }
     }
