@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
+	'hostname' => 'sevimae-learningtest-mysqldbserver.mysql.database.azure.com',
+	'username' => 'keni@sevimae-learningtest-mysqldbserver',
+	'password' => 'Root1234',
+	'database' => 'db_elearning',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
