@@ -1,4 +1,5 @@
 
+<container>
 <div class="headline">
     <h1>Course</h1>
     <hr>
@@ -41,3 +42,4 @@
             ?>
         </li>
 </div>
+<container>
