@@ -295,6 +295,7 @@ padding: 22px 18px;
 .btn{
   float:right;
   margin-top:45px;
+  margin-right: 3px;
 }
 .dropbtn {
   background-color: rgb(48, 135, 185);

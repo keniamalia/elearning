@@ -1,54 +1,43 @@
 
-<container>
 <div class="headline">
-    <h1>Course</h1>
-    <hr>
-    <br>
-        <li class="row-grid">
-            <?php
-                foreach($data as $row){
-            ?> 
-            
-            
-            <ul class="view-grid">
-                <div class="outer">
-                    <img src="<?php echo base_url() . $row['attachment'] ?>" alt="Image"  />
-                    <form action="<?php echo base_url() . 'home/download/'?>" method="post">
-                        <input type="hidden" value="<?php echo $row['attachment'] ;?>" name="download"/>
-                        <button type="submit" class="dropbtn">Download Attachment</button>
-                    </form>
-                </div>
-                <form action="<?php echo base_url() . 'home/detail_course/'; ?>" method="post" for="details">
-                <div class="inner">
-                    
-                    <h2><?php echo $row['course_name']?></h2>
-                    <hr>
-                    <p><?php echo $row['description']?></p>
-                    <p>Duration: <?php echo $row['duration']?></p>
-                    <input type="hidden" name="id_course" value="<?php echo $row['id_course']?>" />
-                        <button type="submit" class="dropbtn" name="details">See Details</button>
-                    <?php
-                        if(strtolower($this->session->userdata('role_name') == strtolower("dosen"))){
-                            ?>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                    <div class="dropdown-content">
-                                        <a href="<?php echo base_url() . '/home/edit/' . $row['id_course'] ?>">Edit</a>
-                                        <a href="<?php echo base_url() . '/home/remove_course/' . $row['id_course'] ?>">Delete</a>
-                                    </div>
-                            </div>
-                        <?php }
-                    ?>
-                    
-           
-                </div>
-                	
-            </ul>
-            
+    <h1>Courses</h1>
+    <div class="row">
+    <?php
+        foreach($data as $row){
+    ?>
+    <div class="container items">
+        <div class="col-5">
+            <div class="course">
+                <img src="<?php echo base_url() . $row['attachment'] ?>">
+            </div>
+        </div>
+        <div class="col-7">
+            <h3><?php echo $row['course_name']?></h3><hr>
+            <h4>Duration: <?php echo $row['duration']?> Jam</h4>
+            <form class="btn" action="<?php echo base_url() . 'home/download/'?>" method="post">
+                <input type="hidden" name="download" value="<?php echo $row['attachment'] ;?>" />
+                <button type="submit" class="dropbtn">Download Attachment</button>
             </form>
+            <form class="btn" action="<?php echo base_url() . 'home/detail_course/'; ?>" method="post">
+                <input type="hidden" name="id_course" value="<?php echo $row['id_course']?>" />
+                <button type="submit" class="dropbtn">See Details</button>
             <?php
-                }
+                if(strtolower($this->session->userdata('role_name') == strtolower("dosen"))){
+                    ?>
+                    <div class="dropdown">
+                        <button class="dropbtn">Action</button>
+                            <div class="dropdown-content">
+                                <a href="<?php echo base_url() . '/home/edit/' . $row['id_course'] ?>">Edit</a>
+                                <a href="<?php echo base_url() . '/home/remove_course/' . $row['id_course'] ?>">Delete</a>
+                            </div>
+                    </div>
+                <?php }
             ?>
-        </li>
+            </form> 
+        </div>
+    </div>
+    <?php
+        }
+    ?>
+    </div>
 </div>
-<container>
