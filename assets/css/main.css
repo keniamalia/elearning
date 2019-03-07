@@ -1,35 +1,48 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import url(https:fonts.googleapis.com/css?family=Roboto:300);
 
 .login-page {
   width: 360px;
   padding: 8% 0 0;
   margin: auto;
-  background: #cbd5eb; /* fallback for old browsers */
+ /* background: #0075F5; /* fallback for old browsers 
   background: -webkit-linear-gradient(right, #cbd5eb, #cbd5eb);
   background: -moz-linear-gradient(right, #cbd5eb, #cbd5eb);
   background: -o-linear-gradient(right, #cbd5eb, #cbd5eb);
-  background: linear-gradient(to left, #cbd5eb, #cbd5eb);
+  background: linear-gradient(to left, #cbd5eb, #cbd5eb); */
+}
+.register-page{
+  width: 720px;
+  padding: 2% 0 0;
+  margin: auto;
+}
+.course{
+  width: 720px;
+  padding: 1% 0 0;
+  margin: auto;
 }
 .form {
   position: relative;
   z-index: 1;
-  background: #97bbe6;
-  max-width: 360px;
-  margin: 0 auto 100px;
+  background: #f9f9f3;
+  max-width: 80%;
+  margin: auto;
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.form input {
+.form input{
   font-family: "Roboto", sans-serif;
   outline: 0;
-  background: #f9f9f9;
+  background: rgba(0,0,0,.02);
   width: 100%;
-  border: 0;
+  border: 0.5px solid #0078D4;
   margin: 0 0 15px;
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
+}
+.select{
+  
 }
 
 .form .title{
@@ -57,7 +70,7 @@
 .form .message {
   margin: 15px 0 0;
   color: #333333;
-  font-size: 12px;
+  font-size: 16px;
 }
 .form .message a {
   color: #0078D4;
@@ -82,12 +95,7 @@
   font-size: 14px;
 }
 
-.container {
-  position: relative;
-  z-index: 1;
-  max-width: 300px;
-  margin: 0 auto;
-}
+
 .container:before, .container:after {
   content: "";
   display: block;
@@ -116,11 +124,11 @@
   color: #EF3B3A;
 }
 body {
-  background: #cbd5eb; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #cbd5eb, #cbd5eb);
-  background: -moz-linear-gradient(right, #cbd5eb, #cbd5eb);
-  background: -o-linear-gradient(right, #cbd5eb, #cbd5eb);
-  background: linear-gradient(to left, #cbd5eb, #cbd5eb);
+  background: #f2f2f2; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #f2f2f2;, #f2f2f2;);
+  background: -moz-linear-gradient(right, #f2f2f2;, #f2f2f2;);
+  background: -o-linear-gradient(right, #f2f2f2;, #f2f2f2;);
+  background: linear-gradient(to left, #f2f2f2;, #f2f2f2;);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -192,14 +200,20 @@ padding: 22px 18px;
 }
 
 .outer{
-  width: 30%;
-  float: left;
+  max-width: 10%;
   text-align: center; 
 }
+.outer img{
+  width: 480px;
+	height: 320px;
+  position: relative;
+}
 .inner{
-  padding: 0px 10px 10px 10px;
-  width: 60%;
-  float: right;
+  
+  position: relative;
+}
+.inner p{
+  font-size:18px;
 }
 .dropbtn {
   background-color: rgb(48, 135, 185);
@@ -253,4 +267,85 @@ padding: 22px 18px;
   width: 60%;
   padding: 10px 20px 10px 20px;
   float: right;
+}
+
+ .list {
+  margin: 0;
+  padding: 20px 0 0;
+}
+.list li {
+  display: block;
+  background-color: #eee;
+  padding: 10px;
+  box-shadow: inset 0 1px 0 #fff;
+  height: 140px;
+  margin-bottom: 10px;
+}
+.list li img {
+  float: left;
+  padding-right: 20px;
+  width:320px;
+  height:320px;
+}
+.list li h3 {
+  font-size: 2em;
+  margin: 0 0 0.3rem;
+  font-weight: 600;
+}
+.list li .project-title {
+  margin: 0;
+  font-weight: 400;
+  font-size: 1.5em;
+}
+.list li .project-label {
+  margin: 0;
+  font-style: italic;
+}
+.list li i {
+  float: right;
+  color: black;
+  display: block;
+}
+.list li i:hover {
+  color: #3498db;
+}
+.grid {
+  list-style: none;
+}
+.grid img {
+  float: left;
+  padding-right: 20px;
+}
+.grid li {
+  width: 30%;
+  display: inline-block;
+  background-color: #eee;
+  box-shadow: inset 0 1px 0 #fff;
+  margin-bottom: 20px;
+}
+.grid li:nth-of-type(3n+2) {
+  margin: 0 20px;
+}
+.grid li h3 {
+  font-size: 2em;
+  margin: 0 0 0.3rem;
+  font-weight: 600;
+}
+.grid li .project-title {
+  margin: 0;
+  font-weight: 400;
+  font-size: 1.5em;
+}
+.grid li .project-label {
+  margin: 0;
+  font-style: italic;
+}
+.grid li i {
+  float: right;
+  margin: 0 10px 0 0;
+  color: black;
+  display: block;
+}
+.grid li i:hover {
+  color: #3498db;
 }

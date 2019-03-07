@@ -4,26 +4,36 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/animate.css">
-
+<link rel="stylesheet" href="css/grid.css">
 <title>Title of the document</title>
 </head>
 <body>
-<div class="login-page">
-  <div class="form animated fadeInDown fast">
-      <p class="title">Register</p>
+<div class="register-page">
+  <div class="form row animated fadeInDown fast">
+      <p class="title">Register an Account</p>
     <form class="login-form" method="post" action="">
+      <div class="col-12">
       <input type="text" placeholder="Fullname" name="fullname" required/>
+      </div>
+      <div class="col-6">
       <input type="text" placeholder="Email" name="email" required/>
-      <input type="text" placeholder="No Telepon" name="no_telp" required/>
-      <input type="text" placeholder="Username" name="username" required/>
-      <input type="password" placeholder="Password" name= "password" id="password" required>
-      <input type="password" placeholder="Confirm Password" name="confirm_password" id="confirm_password" required>
+      <div class="select">
       <select name="roles">
           <option value="">Please Select Roles</option>
           <option value="">Saab</option>
           <option value="">Saab</option>
       </select>
+      </div>
+      <input type="password" placeholder="Confirm Password" name="confirm_password" id="confirm_password" required>
+      </div>
+      <div class="col-6">
+      <input type="text" placeholder="Username" name="username" required/>
+      <input type="text" placeholder="No Telepon" name="no_telp" required/>
+      <input type="password" placeholder="Password" name= "password" id="password" required>
+      </div>
+      <div class="col-12">
       <button type="submit" class="pure-button pure-button-primary">Register</button>
+      </div>
       <p class="message">Already have an account? <a href="login.html">Log in</a></p>
     </form>
   </div>
