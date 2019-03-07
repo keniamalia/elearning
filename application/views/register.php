@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/animate.css">
 
-<title>Title of the document</title>
-</head>
 <body>
 <div class="login-page">
   <div class="form animated fadeInDown fast">
-      <p class="title">Register</p>
-    <form class="login-form" method="post" action="">
+    <p class="title">Register</p>
+    <form class="login-form" method="post" action="<?php echo base_url() . 'user/register_user'?>">
       <input type="text" placeholder="Fullname" name="fullname" required/>
       <input type="text" placeholder="Email" name="email" required/>
       <input type="text" placeholder="No Telepon" name="no_telp" required/>
@@ -20,11 +12,17 @@
       <input type="password" placeholder="Confirm Password" name="confirm_password" id="confirm_password" required>
       <select name="roles">
           <option value="">Please Select Roles</option>
-          <option value="">Saab</option>
-          <option value="">Saab</option>
+          <?php
+            foreach($data as $row){
+              ?>
+              <option value="<?php echo $row['iduser_role'] ?>"><?php echo $row['role_name'] ?></option>
+              <?php
+            }
+          ?>
+          
       </select>
       <button type="submit" class="pure-button pure-button-primary">Register</button>
-      <p class="message">Already have an account? <a href="login.html">Log in</a></p>
+      <p class="message">Already have an account? <a href="<?php echo base_url() . 'user/index'?>">Log in</a></p>
     </form>
   </div>
 </div>
