@@ -1,8 +1,16 @@
 
 <div class="headline">
     <h1>Courses</h1>
+    
     <div class="row">
+        <?php
+         if(strtolower($this->session->userdata('role_name') == strtolower("dosen"))){
+        ?>
+        <form class="container right" action="<?php echo base_url() . 'home/index_course' ?>">
+            <button type="submit" class="dropbtn">Add Course </button>
+        </form>
     <?php
+        }
         foreach($data as $row){
     ?>
     <div class="container items">
@@ -27,7 +35,7 @@
                     <div class="dropdown">
                         <button class="dropbtn">Action</button>
                             <div class="dropdown-content">
-                                <a href="<?php echo base_url() . '/home/edit/' . $row['id_course'] ?>">Edit</a>
+                                <a href="<?php echo base_url() . '/home/index_edit/' . $row['id_course'] ?>">Edit</a>
                                 <a href="<?php echo base_url() . '/home/remove_course/' . $row['id_course'] ?>">Delete</a>
                             </div>
                     </div>

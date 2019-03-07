@@ -9,7 +9,7 @@
                 else{
                     echo "#";
                 } 
-                ?>"><p>E-Learning</p></a>
+                ?>"><h3 style="color:#ffff">E-Learning</h3></a>
             </div>
             <div class="header-nav">
                 <nav>

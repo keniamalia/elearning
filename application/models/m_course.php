@@ -41,5 +41,10 @@
         
             return $this->db->affected_rows();
         }
+        function update_courses($course_name, $description, $duration, $attachment, $id_course){
+            $sql = "UPDATE ms_course set course_name=?, description=?, duration=?, attachment=? WHERE id_course=?";
+            $query = $this->db->query($sql, array($course_name, $description, $duration, $attachment, $id_course));
+            return $this->db->affected_rows();
+        }
     }
 ?>
