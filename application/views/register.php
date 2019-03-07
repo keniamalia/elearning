@@ -1,28 +1,37 @@
 
 <body>
-<div class="login-page">
-  <div class="form animated fadeInDown fast">
-    <p class="title">Register</p>
-    <form class="login-form" method="post" action="<?php echo base_url() . 'user/register_user'?>">
+<div class="register-page">
+  <div class="form row animated fadeInDown fast">
+    <p class="title">Register an Account</p>
+    <form class="login-form" method="post" action="<?php echo base_url() . 'user/register_user' ?>">
+    <div class="col-12">
       <input type="text" placeholder="Fullname" name="fullname" required/>
+    </div>
+    <div class="col-6">
       <input type="text" placeholder="Email" name="email" required/>
-      <input type="text" placeholder="No Telepon" name="no_telp" required/>
-      <input type="text" placeholder="Username" name="username" required/>
-      <input type="password" placeholder="Password" name= "password" id="password" required>
-      <input type="password" placeholder="Confirm Password" name="confirm_password" id="confirm_password" required>
-      <select name="roles">
+      <div class="select">
+        <select name="roles">
           <option value="">Please Select Roles</option>
-          <?php
-            foreach($data as $row){
-              ?>
-              <option value="<?php echo $row['iduser_role'] ?>"><?php echo $row['role_name'] ?></option>
-              <?php
-            }
-          ?>
-          
-      </select>
+            <?php
+              foreach($data as $row){
+                ?>
+                <option value="<?php echo $row['iduser_role'] ?>"><?php echo $row['role_name'] ?></option>
+                <?php
+              }
+            ?>
+        </select>
+      </div>
+      <input type="password" placeholder="Confirm Password" name="confirm_password" id="confirm_password" required>
+    </div>
+    <div class="col-6">
+      <input type="text" placeholder="Username" name="username" required/>
+      <input type="text" placeholder="No Telepon" name="no_telp" required/>
+      <input type="password" placeholder="Password" name= "password" id="password" required>
+    </div>
+    <div class="col-12">
       <button type="submit" class="pure-button pure-button-primary">Register</button>
-      <p class="message">Already have an account? <a href="<?php echo base_url() . 'user/index'?>">Log in</a></p>
+    </div>
+    <p class="message">Already have an account? <a href="<?php echo base_url() . 'user/index'?>">Log in</a></p>
     </form>
   </div>
 </div>
