@@ -116,7 +116,7 @@
   color: #EF3B3A;
 }
 body {
-  background: #cbd5eb; /* fallback for old browsers */
+  background: #f2f2f2; /* fallback for old browsers */
   background: -webkit-linear-gradient(right, #cbd5eb, #cbd5eb);
   background: -moz-linear-gradient(right, #cbd5eb, #cbd5eb);
   background: -o-linear-gradient(right, #cbd5eb, #cbd5eb);
