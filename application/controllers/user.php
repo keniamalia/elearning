@@ -27,7 +27,7 @@ class User extends CI_Controller{
                     'id_user'   => $login['dataresult']['id_user'],
                     'username' => $login['dataresult']['username'],
                     'role_name' => $login['dataresult']['role_name'],
-                    'id_role' => $login['dataresult']['id_role']
+                    'id_role' => $login['dataresult']['role_id']
                 );
                 //set session userdata
                 $this->session->set_userdata($session_data);

@@ -8,18 +8,25 @@
             <?php
                 foreach($data as $row){
             ?> 
+            
+            
             <ul class="view-grid">
                 <div class="outer">
-                    <img src="<?php echo $row['attachment']?>" alt="Image"   >
+                    <img src="<?php echo base_url() . $row['attachment'] ?>" alt="Image"  />
+                    <form action="<?php echo base_url() . 'home/download/'?>" method="post">
+                        <input type="hidden" value="<?php echo $row['attachment'] ;?>" name="download"/>
+                        <button type="submit" class="dropbtn">Download Attachment</button>
+                    </form>
                 </div>
+                <form action="<?php echo base_url() . 'home/detail_course/'; ?>" method="post" for="details">
                 <div class="inner">
+                    
                     <h2><?php echo $row['course_name']?></h2>
                     <hr>
                     <p><?php echo $row['description']?></p>
                     <p>Duration: <?php echo $row['duration']?></p>
-                    <form action="<?php echo base_url() . 'home/detail_course/' ?>" method="post">
-                    <input type="hidden" name="id_course" value="id_course" />
-                        <button type="submit" class="dropbtn">See Details</button>
+                    <input type="hidden" name="id_course" value="<?php echo $row['id_course']?>" />
+                        <button type="submit" class="dropbtn" name="details">See Details</button>
                     <?php
                         if(strtolower($this->session->userdata('role_name') == strtolower("dosen"))){
                             ?>
@@ -27,16 +34,18 @@
                                 <button class="dropbtn">Action</button>
                                     <div class="dropdown-content">
                                         <a href="<?php echo base_url() . '/home/edit/' . $row['id_course'] ?>">Edit</a>
-                                        <a href="<?php echo base_url() . '/home/detail_course/' . $row['id_course'] ?>">Delete</a>
+                                        <a href="<?php echo base_url() . '/home/remove_course/' . $row['id_course'] ?>">Delete</a>
                                     </div>
                             </div>
                         <?php }
                     ?>
                     
-            </form>
+           
                 </div>
                 	
             </ul>
+            
+            </form>
             <?php
                 }
             ?>

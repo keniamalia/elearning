@@ -9,7 +9,7 @@
 
             foreach($result as $row){
                 $temp = array('success' => "true", 'id_course' => $row['id_course'], 'course_name' => $row['course_name'],
-                                'description' =>  $row['description'],'attachment' => base_url() + $row['attachment'], 'duration' => $row['duration']);
+                                'description' =>  $row['description'],'attachment' => $row['attachment'], 'duration' => $row['duration']);
                 array_push($course, $temp);
             }
 
@@ -33,6 +33,13 @@
             $query = $this->db->where('ms_course.id_course', $id_course)->limit(1)->get('ms_course')->row();
 
             return $query;
+        }
+
+        function delete_course($id_course){
+            $sql = "DELETE FROM ms_course WHERE id_course=?";
+            $this->db->query($sql, array($id_course));
+        
+            return $this->db->affected_rows();
         }
     }
 ?>

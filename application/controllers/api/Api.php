@@ -13,9 +13,9 @@ class Api extends REST_Controller{
             case "insertCourse":
             $this->insertCourse();
             break;
-            default :
-            $this->not_found();
-            break;
+            // default :
+            // $this->not_found();
+            // break;
         }
     }
     public function index_get() {
@@ -56,19 +56,39 @@ class Api extends REST_Controller{
     public function insertCourse(){
         $course_name = $this->input->post('course_name');
         $duration = $this->input->post('duration');
-        $attachment = $this->input->post('attachment');
-        $desc = $this->input->post('description');
+        $description = $this->input->post('description');
 
-        $insert = $this->m_course->insert_course($course_name, $duration, $desc, $attachment);
+        if(!empty($_FILES['image'])){
+            $path = './uploads/image/'. $course_name .'/';
 
-        if($insert > 0){
-            $this->response_success();
-        }
-        else{
-            $this->response_failed();
+            if (!is_dir($path)) {
+                mkdir($path, 0777, true);
+            }
+
+            $config['upload_path'] = $path;
+            $config['allowed_types'] = 'jpg|jpeg|png';
+            $config['file_name'] = '_'.time();
+            $config['max_size'] = 5000;
+
+            $this->load->library('upload', $config);
+            $upload = $this->upload->do_upload('image');
+
+            $uploadData = $this->upload->data();
+
+            $picture = $uploadData['file_name'];
+
+            $imageurl = base_url().substr($path, 2).$picture;
+
+            $insert = $this->m_course->insert_course($course_name, $duration, $description, $imageurl);
+
+            if($insert > 0){
+                $this->response_success();
+            }
+            else{
+                $this->response_failed();
+            }
         }
     }
-
     public function empty_data() {
         $this->set_response([[
         'success' => "false",

@@ -2,7 +2,14 @@
     <header>
         <div class="header">
             <div class="header-navtitle">
-                <p><a>E-Learning</a></p>
+                <a href="<?php
+                if($this->session->userdata('username') != null) {
+                    base_url() . 'home';
+                }
+                else{
+                    echo "#";
+                } 
+                ?>"><p>E-Learning</p></a>
             </div>
             <div class="header-nav">
                 <nav>
