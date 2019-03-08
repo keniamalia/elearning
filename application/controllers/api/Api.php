@@ -5,7 +5,7 @@ require APPPATH . '/libraries/REST_Controller.php';
 class Api extends REST_Controller{
 
     public function index_post() {
-        $action = $this->input->post('action');
+        $action = $this->post('action');
         switch ($action) {
             case "login":
             $this->login();
@@ -13,9 +13,12 @@ class Api extends REST_Controller{
             case "insertCourse":
             $this->insertCourse();
             break;
-            // default :
-            // $this->not_found();
-            // break;
+            case "insertComment":
+            $this->insertComment();
+            break;
+            default :
+            $this->not_found();
+            break;
         }
     }
     public function index_get() {
@@ -23,6 +26,9 @@ class Api extends REST_Controller{
         switch ($action) {
             case "getListCourse":
             $this->getListCourse();
+            break;
+            case "getDetailCourse":
+            $this->getDetailCourse();
             break;
             default :
             $this->not_found();
@@ -58,8 +64,8 @@ class Api extends REST_Controller{
         $duration = $this->input->post('duration');
         $description = $this->input->post('description');
 
-        if(!empty($_FILES['image'])){
-            $path = './uploads/image/'. $course_name .'/';
+
+        $path = './uploads/image/'. $course_name. '/';
 
             if (!is_dir($path)) {
                 mkdir($path, 0777, true);
@@ -67,17 +73,17 @@ class Api extends REST_Controller{
 
             $config['upload_path'] = $path;
             $config['allowed_types'] = 'jpg|jpeg|png';
-            $config['file_name'] = '_'.time();
-            $config['max_size'] = 5000;
+            $config['file_name'] = 'course'.time();
+            $config['max_size'] = 60000;
 
             $this->load->library('upload', $config);
-            $upload = $this->upload->do_upload('image');
+            $upload = $this->upload->do_upload($this->post('image'));
 
             $uploadData = $this->upload->data();
 
             $picture = $uploadData['file_name'];
 
-            $imageurl = base_url().substr($path, 2).$picture;
+            $imageurl = substr($path, 2).$picture;
 
             $insert = $this->m_course->insert_course($course_name, $duration, $description, $imageurl);
 
@@ -87,26 +93,72 @@ class Api extends REST_Controller{
             else{
                 $this->response_failed();
             }
-        }
+        
     }
-    public function empty_data() {
+    private function empty_data() {
         $this->set_response([[
         'success' => "false",
         'message' => 'empty data'
-            ]], REST_Controller::HTTP_OK); // NOT_FOUND (404) being the HTTP response code
+            ]], REST_Controller::HTTP_OK); 
+    }
+    private function not_found() {
+        $this->set_response([[
+        'success' => "false",
+        'message' => "Not found"
+            ]], REST_Controller::HTTP_OK);
     }
 
-    public function response_success() {
+    private function response_success() {
         $this->set_response([[
         'success' => "true",
         'message' => 'Insert successfully'
-            ]], REST_Controller::HTTP_OK); // NOT_FOUND (404) being the HTTP response code
+            ]], REST_Controller::HTTP_OK);
     }
-    public function response_failed() {
+    private function response_failed() {
         $this->set_response([[
         'success' => "false",
         'message' => 'Insert Failed'
-            ]], REST_Controller::HTTP_OK); // NOT_FOUND (404) being the HTTP response code
+            ]], REST_Controller::HTTP_OK);
+    }
+
+    public function getDetailCourse(){
+        $id_course = $this->get('id_course');
+
+        if($id_course == null || $id_course == 0){
+            $this->set_response([[
+                'success' => "false",
+                'message' => "ID cannot be null"
+            ]], REST_Controller::HTTP_OK);
+        }
+        else{
+            $data = $this->m_course->detail_courses($id_course);
+
+            if(!empty($data)){
+                $course_data = array('success' => "true", 'id_course' => $data->id_course, 'course_name' => $data->course_name, 'duration' => $data->duration,
+                              'description' => $data->description, 'attachment' => base_url() . $data->attachment);
+                
+                $this->set_response($course_data, REST_Controller::HTTP_OK);
+            }
+            else{
+                $this->empty_data();
+            }
+        }
+
+    }
+
+    public function insertComment(){
+        $comment = $this->post('comment');
+        $id_course = $this->post('id_course');
+        $id_user = $this->post('id_user');
+
+        $insert = $this->m_comment->add_comment($comment, $id_course, $id_user);
+
+        if($insert){
+            $this->response_success();
+        }
+        else{
+            $this->response_failed();
+        }
     }
 }
 ?>

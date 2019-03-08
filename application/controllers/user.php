@@ -93,8 +93,5 @@ class User extends CI_Controller{
         $this->load->view('login');
     }
 
-    function get_all_user_role(){
-        
-    }
 }
 ?>

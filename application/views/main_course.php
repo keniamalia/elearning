@@ -26,8 +26,7 @@
                 <input type="hidden" name="download" value="<?php echo $row['attachment'] ;?>" />
                 <button type="submit" class="dropbtn">Download Attachment</button>
             </form>
-            <form class="btn" action="<?php echo base_url() . 'home/detail_course/'; ?>" method="post">
-                <input type="hidden" name="id_course" value="<?php echo $row['id_course']?>" />
+            <form class="btn" action="<?php echo base_url() . 'home/detail_course/' . $row['id_course'] ?>" method="get">
                 <button type="submit" class="dropbtn">See Details</button>
             <?php
                 if(strtolower($this->session->userdata('role_name') == strtolower("dosen"))){

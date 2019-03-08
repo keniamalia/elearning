@@ -13,9 +13,7 @@
             $this->load->view('header');
             $this->load->view('add_course');
         }
-        function detail_course(){
-            $id_course = $this->input->post('id_course');
-
+        function detail_course($id_course){
             //echo $id_course;
             $this->load->view('call_css');
             $this->load->view('header');
