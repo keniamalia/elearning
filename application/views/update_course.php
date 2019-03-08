@@ -1,6 +1,6 @@
 <div class="form-style-2">
         <div class="form-style-2-heading">Edit Course</div>
-            <form action="<?php echo base_url() . 'home/edit_course'?>" method="post">
+            <form action="<?php echo base_url() . 'home/edit_course'?>" method="post" enctype="multipart/form-data">
                     <label for="field1">
                             <span>Course ID 
                                 <span class="required">*</span>

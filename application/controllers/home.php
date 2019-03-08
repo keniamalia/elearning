@@ -101,7 +101,8 @@
             $oldImage = $this->input->post('oldImage');
 
             
-            if($this->input->post('image') != null){
+            if($_FILES['image']){
+                
                 $path = './uploads/image/'. $course_name. '/';
     
                  if (!is_dir($path)) {
@@ -123,23 +124,25 @@
                  $imageurl = substr($path, 2).$picture;
 
                  $insert = $this->m_course->update_courses($course_name, $description, $duration, $imageurl, $id_course);
+
             }
             else{
                 $insert = $this->m_course->update_courses($course_name, $description, $duration, $oldImage, $id_course);
+
             }
 
-             if($insert > 0){
-                 echo "<script type='text/javascript'>
-                       alert('Success');
-                       </script>";
-                 redirect('home');
-             }
-             else{
-                 echo "<script type='text/javascript'>
-                       alert('Failed');
-                       </script>";
-                 echo "gagal";
-             }
+            if($insert > 0){
+                echo "<script type='text/javascript'>
+                      alert('Success');
+                      </script>";
+                redirect('home');
+            }
+            else{
+                echo "<script type='text/javascript'>
+                      alert('Failed');
+                      </script>";
+                redirect('home');
+            }
         }
 
         function index_edit($id_course){

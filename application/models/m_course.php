@@ -36,6 +36,10 @@
         }
 
         function delete_course($id_course){
+            
+            $deleteComment = "DELETE FROM comment WHERE id_course=".$id_course;
+            $this->db->query($deleteComment);
+
             $sql = "DELETE FROM ms_course WHERE id_course=?";
             $this->db->query($sql, array($id_course));
         

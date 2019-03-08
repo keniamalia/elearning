@@ -4,7 +4,7 @@
             <div class="header-navtitle">
                 <a href="<?php
                 if($this->session->userdata('username') != null) {
-                    base_url() . 'home';
+                    echo base_url() . 'home';
                 }
                 else{
                     echo "#";
